@@ -188,4 +188,4 @@ On launch, users choose from 7 modules in an interactive menu.
 - Inputs must match existing records  
 - Ensure `b.jpg` image is present in both apps for UI consistency
 
-**Thank you for using BizBot! **
+Thank you for using BizBot! 
