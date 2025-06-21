@@ -41,155 +41,188 @@ Edit
 ```bash
 git clone https://github.com/KainatIjaz/bizbot-system.git
 cd bizbot-system
-Step 2: Create & Activate Virtual Environment
-bash
-Copy
-Edit
+
+### 🔧 Step 2: Create & Activate Virtual Environment
+
+```bash
 python -m venv venv
 # Windows:
 venv\Scripts\activate
 # macOS/Linux:
 source venv/bin/activate
-Step 3: Install Dependencies
-bash
-Copy
-Edit
+
+### 🔧 Step 3: Install Dependencies
+
+```bash
 pip install -r requirements.txt
-Step 4: Setup Database
-Create a PostgreSQL database named Bizbot.
 
-Run the schema:
 
-bash
-Copy
-Edit
+### 🔧 Step 4: Setup Database
+
+Create a PostgreSQL database named `Bizbot` and run the schema:
+
+```bash
 psql -U postgres -d Bizbot -f database_schema.sql
-Step 5: Configure Database Access
-Update these lines in both admin_app/app.py and customer_app/app.py:
 
-python
-Copy
-Edit
+### 🔧 Step 5: Configure Database Access
+
+Update the following line in both `admin_app/app.py` and `customer_app/app.py`:
+
+```python
 psycopg2.connect("dbname=Bizbot user=postgres password=1234")
-Step 6: Run Applications
-Customer App:
 
-bash
-Copy
-Edit
+### 🔧 Step 6: Run Applications
+
+#### 📲 Customer App:
+
+```bash
 cd customer_app
 streamlit run app.py
-Admin App (in another terminal):
 
-bash
-Copy
-Edit
-cd admin_app
-streamlit run app.py
-🧠 Admin Dashboard Manual
-🔍 Overview
+
+## 🧠 Admin Dashboard Manual
+
+### 🧾 Overview
+
 BizBot's Admin Panel offers:
 
-AI-powered Sales Recommendations
+- ✅ AI-powered Sales Recommendations  
+- 📈 Sales Forecasting with Prophet  
+- 📊 Visual Insights via Power BI  
+- 📬 WhatsApp-based Invoice Sending (via `send_whatsapp.py`)
 
-Sales Forecasting with Prophet
+---
 
-Visual Insights via Power BI
+### 💻 System Requirements
 
-WhatsApp-based Invoice Sending (via send_whatsapp.py)
+- Python 3.9+  
+- PostgreSQL  
+- Required libraries:
+  - `streamlit`
+  - `psycopg2`
+  - `prophet`
+  - `transformers`
+  - `langchain`
+  - `pandas`
+  - `plotly`
 
-💻 System Requirements
-Python 3.9+
+---
 
-PostgreSQL
+### 🧩 Modules & Features
 
-Required libraries: streamlit, psycopg2, prophet, transformers, langchain, pandas, plotly
+#### 🔹 Module 1: Analysis
 
-🧩 Modules & Features
-1. Analysis
-View interactive Power BI dashboards.
+- View interactive Power BI dashboards.  
+- Analyze KPIs, trends, and performance metrics.
 
-Analyze KPIs, trends, and performance metrics.
+#### 🔹 Module 2: Prediction
 
-2. Prediction
-Forecast daily sales (1 to 7 days) using Prophet.
+- Forecast daily sales (1 to 7 days) using Prophet.  
+- View historical and future sales in grouped bar charts.
 
-View historical and future sales in grouped bar charts.
+#### 🔹 Module 3: Send Invoices
 
-3. Send Invoices
-Launches WhatsApp Web with pre-filled invoice text.
+- Launches WhatsApp Web with pre-filled invoice text.  
+- Calls `send_whatsapp.py` to automate browser script launch.  
+- Admin manually sends it to customers.
 
-Calls send_whatsapp.py to automate browser script launch.
+#### 🔹 Module 4: AI Recommendation
 
-Admin manually sends it to customers.
+- Uses a fine-tuned GPT-2 model (`KainatIjaz/my-finetuned-gpt2-model`) via HuggingFace + LangChain.  
+- Admin can ask sales or business-related queries.
 
-4. AI Recommendation
-Uses a fine-tuned GPT-2 model (KainatIjaz/my-finetuned-gpt2-model) via HuggingFace + LangChain.
+---
 
-Admin can ask sales or business-related queries.
+### 📊 Data & Model Setup
 
-🔗 Data & Model Setup
-Sales Table must include: Date, Time, Quantity, Sale Price
+- Sales Table must include: `Date`, `Time`, `Quantity`, `Sale Price`  
+- Model must be public or accessed via token from HuggingFace.
 
-Model must be public or accessed via token from HuggingFace.
+---
 
-⚠ Troubleshooting
-Model Error: Verify model ID/token.
+### ⚠ Troubleshooting
 
-DB Error: Check credentials or if PostgreSQL is running.
+- **Model Error**: Verify model ID/token.  
+- **DB Error**: Check credentials or if PostgreSQL is running.  
+- **No Forecast**: Ensure data isn’t empty.
 
-No Forecast: Ensure data isn’t empty.
+---
 
-🔄 Maintenance
-Periodically update the GPT-2 model.
+### 🔄 Maintenance
 
-Backup dashboards.
+- Periodically update the GPT-2 model.  
+- Backup dashboards.  
+- Keep database cleaned and updated.
 
-Keep database cleaned and updated.
+---
 
-🤖 Customer Portal Manual
-🧭 Getting Started
+## 🤖 Customer Portal Manual
+
+### 🧾 Getting Started
+
 On launch, users are welcomed and asked to choose from 7 service modules.
 
-💡 Modules & Features
-1. Branch Timings ⏰
-Get operating hours by selecting a branch.
+---
 
-2. Live Sales/Discount Info 🏷️
-View active promotions per branch.
+### 🧩 Modules & Features
 
-3. Product Availability 🏬
-Enter product name + quantity.
+#### 🔹 Module 1: Branch Timings ⏰
 
-View which branches have stock.
+- Get operating hours by selecting a branch.
 
-If unavailable, user can submit contact info for restock alerts.
+#### 🔹 Module 2: Live Sales/Discount Info 🏷️
 
-4. Product Location 📍
-Search for product placement within branches.
+- View active promotions per branch.
 
-5. Product Detail 🛒
-View product name, price, category, and description.
+#### 🔹 Module 3: Product Availability 🏬
 
-6. Our Products 📦
-Explore products by category.
+- Enter product name + quantity.  
+- View which branches have stock.  
+- If unavailable, user can submit contact info for restock alerts.
 
-7. File a Complaint 📝
-Submit complaints using email and description.
+#### 🔹 Module 4: Product Location 📍
 
+- Search for product placement within branches.
 
+#### 🔹 Module 5: Product Detail 🛒
 
-⚠ Notes
-Email/phone fields are mandatory for contact features.
+- View product name, price, category, and description.
 
-Input must match existing records for accurate queries.
+#### 🔹 Module 6: Our Products 📦
 
-Background image b.jpg should be present in both app folders for consistent UI.
+- Explore products by category.
 
+#### 🔹 Module 7: File a Complaint 📝
 
+- Submit complaints using email and description.
+
+---
+
+### 🔁 Start Over Feature
+
+- A button at the bottom to reset session and return to the main menu.
+
+---
+
+### ⚠ Notes
+
+- Email/phone fields are mandatory for contact features.  
+- Input must match existing records for accurate queries.  
+- Background image `b.jpg` should be present in both app folders for consistent UI.
+
+---
+
+## 📬 Support & Contribution
+
+For issues, contact [KainatIjaz](https://github.com/KainatIjaz) or open a GitHub issue.  
 Contributions are welcome via pull requests!
 
+---
 
+## 📄 License
 
-Thank you for using BizBot!
+MIT License (or specify your actual license)
 
+---
+
+**Thank you for using BizBot!**
