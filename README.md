@@ -159,27 +159,27 @@ On launch, users choose from 7 modules in an interactive menu.
 
 ### Modules & Features
 
-####  1. Branch Timings ⏰  
+####  1. Branch Timings  
 - Shows opening/closing hours by branch
 
-####  2. Live Sales/Discounts 🏷️  
+####  2. Live Sales/Discounts 
 - Displays active branch promotions
 
-####  3. Product Availability 🏬  
+####  3. Product Availability 
 - Users enter product + quantity  
 - Returns branch availability  
 - Option to leave contact info if out of stock
 
-####  4. Product Location 📍  
+####  4. Product Location 
 - Find product placement in branches
 
-####  5. Product Detail 🛒  
+####  5. Product Detail 
 - Shows name, category, price, and description
 
-####  6. Our Products 📦  
+####  6. Our Products 
 - Explore product listings by category
 
-####  7. File a Complaint 📝  
+####  7. File a Complaint 
 - Submit email + description of issue
 
 ### Notes
@@ -188,4 +188,4 @@ On launch, users choose from 7 modules in an interactive menu.
 - Inputs must match existing records  
 - Ensure `b.jpg` image is present in both apps for UI consistency
 
-**Thank you for using BizBot! 🚀**
+**Thank you for using BizBot! **
