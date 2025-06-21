@@ -1,12 +1,10 @@
-# 📦 BizBot System
+# BizBot System
 
 **BizBot** is a dual-module platform designed to empower businesses through:
 - A **Customer Support Portal** to handle queries, complaints, and product availability.
 - An **Admin Dashboard** to manage insights, AI recommendations, WhatsApp invoices, and forecasting.
 
----
-
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 bizbot-system/
@@ -22,17 +20,16 @@ bizbot-system/
 ├── database_schema.sql     # PostgreSQL Schema
 ```
 
----
 
-## ✅ Pre-Requisites
+## Pre-Requisites
 
 - Python 3.9+
 - Git
 - PostgreSQL (with a blank database created)
 
----
 
-## 🚀 Installation & Setup
+
+## Installation & Setup
 
 ### Step 1: Clone the Repository
 
@@ -91,17 +88,16 @@ cd admin_app
 streamlit run app.py
 ```
 
----
 
-## 🧠 Admin Dashboard Manual
+## Admin Dashboard Manual
 
 ### Overview
 
 The Admin Dashboard provides:
-- ✅ AI-Powered Sales Recommendations  
-- 📈 Forecasting with Prophet  
-- 📊 Power BI Insights  
-- 📬 WhatsApp Invoice Sending  
+-  AI-Powered Sales Recommendations  
+-  Forecasting with Prophet  
+-  Power BI Insights  
+-  WhatsApp Invoice Sending  
 
 ### System Requirements
 
@@ -118,20 +114,20 @@ The Admin Dashboard provides:
 
 ### Modules & Features
 
-#### 🔹 Module 1: Analysis
+####  Module 1: Analysis
 - View interactive Power BI dashboards  
 - Analyze KPIs, trends, and performance
 
-#### 🔹 Module 2: Prediction
+####  Module 2: Prediction
 - Forecast sales (1–7 days) using Prophet  
 - View historical + predicted data in grouped bar charts
 
-#### 🔹 Module 3: Send Invoices
+####  Module 3: Send Invoices
 - Launch WhatsApp Web with pre-filled invoice  
 - Uses `send_whatsapp.py` to open browser automation  
 - Admin manually confirms send  
 
-#### 🔹 Module 4: AI Recommendations
+####  Module 4: AI Recommendations
 - Ask GPT-2 model (`KainatIjaz/my-finetuned-gpt2-model`) for business strategies  
 - Integrated via HuggingFace + LangChain
 
@@ -154,9 +150,8 @@ The Admin Dashboard provides:
 - Regularly back up dashboards  
 - Clean database periodically
 
----
 
-## 🤖 Customer Portal Manual
+##  Customer Portal Manual
 
 ### Getting Started
 
@@ -164,27 +159,27 @@ On launch, users choose from 7 modules in an interactive menu.
 
 ### Modules & Features
 
-#### 🔹 1. Branch Timings ⏰  
+####  1. Branch Timings ⏰  
 - Shows opening/closing hours by branch
 
-#### 🔹 2. Live Sales/Discounts 🏷️  
+####  2. Live Sales/Discounts 🏷️  
 - Displays active branch promotions
 
-#### 🔹 3. Product Availability 🏬  
+####  3. Product Availability 🏬  
 - Users enter product + quantity  
 - Returns branch availability  
 - Option to leave contact info if out of stock
 
-#### 🔹 4. Product Location 📍  
+####  4. Product Location 📍  
 - Find product placement in branches
 
-#### 🔹 5. Product Detail 🛒  
+####  5. Product Detail 🛒  
 - Shows name, category, price, and description
 
-#### 🔹 6. Our Products 📦  
+####  6. Our Products 📦  
 - Explore product listings by category
 
-#### 🔹 7. File a Complaint 📝  
+####  7. File a Complaint 📝  
 - Submit email + description of issue
 
 ### Notes
@@ -192,16 +187,5 @@ On launch, users choose from 7 modules in an interactive menu.
 - Email/phone required for contact features  
 - Inputs must match existing records  
 - Ensure `b.jpg` image is present in both apps for UI consistency
-
----
-
-## 📬 Support & Contributions
-
-For issues, reach out via [GitHub Issues](https://github.com/KainatIjaz/bizbot-system/issues)  
-Contributions welcome via pull requests!
-
----
-
----
 
 **Thank you for using BizBot! 🚀**
