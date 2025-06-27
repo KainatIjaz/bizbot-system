@@ -126,6 +126,14 @@ if "contact_submitted" not in st.session_state:
 if "show_contact_form" not in st.session_state:
     st.session_state.show_contact_form = False
 
+# --- Session State Initialization for Complaint Form ---
+if "complaint_email_value" not in st.session_state:
+    st.session_state.complaint_email_value = ""
+if "complaint_text_value" not in st.session_state:
+    st.session_state.complaint_text_value = ""
+if "complaint_success_message" not in st.session_state: # NEW: To store the success message
+    st.session_state.complaint_success_message = ""
+
 # --- Menu Options ---
 menu_options = [
     "Branch Timings ⏰",
@@ -341,13 +349,33 @@ def show_product_location():
                     st.write(f"- 🏬 Branch: {branch_name}, 📦 Location: {location}")
             else:
                 st.warning(f" Could not find {product_name} in the selected branch (or in any branch if 'All Branches' was selected). Check if the 'product_location' column exists and has data.")
-
+                
 def show_file_complaint():
     st.subheader("📝 File a Complaint")
-    email = st.text_input("📧 Enter your email:", key="email_complaint")
-    complaint = st.text_area("✍️ Enter your complaint:", key="complaint_text")
+
+    # Display the success message if it exists in session state
+    if st.session_state.complaint_success_message:
+        st.success(st.session_state.complaint_success_message)
+
+    # Use the separate session state variables to control the input values.
+    # Use on_change to clear the success message if the user starts typing again.
+    email = st.text_input(
+        "📧 Enter your email:",
+        value=st.session_state.complaint_email_value,
+        key="email_complaint",
+        on_change=lambda: st.session_state.update(complaint_success_message="")
+    )
+    complaint = st.text_area(
+        "✍️ Enter your complaint:",
+        value=st.session_state.complaint_text_value,
+        key="complaint_text",
+        on_change=lambda: st.session_state.update(complaint_success_message="")
+    )
 
     if st.button("Submit Complaint 🚨", key="submit_complaint"):
+        # Clear any previous success message when the button is clicked to prevent flicker
+        st.session_state.complaint_success_message = ""
+
         if not email:
             st.error("Email is required.")
         elif not complaint:
@@ -357,14 +385,15 @@ def show_file_complaint():
             if error:
                 st.error(f" Error submitting complaint: {error}")
             elif results is None:
-                st.success("✅ Your complaint has been submitted. We will get back to you soon.")
-                # Clear inputs after successful submission
-                st.session_state.email_complaint = "" # Reset key for text_input
-                st.session_state.complaint_text = "" # Reset key for text_area
-                # st.experimental_rerun() # No need to rerun, just clear inputs
+                # Set the success message to be displayed on the next rerun
+                st.session_state.complaint_success_message = "✅ Your complaint has been submitted. We will get back to you soon."
+                # Reset the session state variables that control the input fields
+                st.session_state.complaint_email_value = ""
+                st.session_state.complaint_text_value = ""
+                # Force a rerun to update the UI (clear inputs and display the message)
+                st.rerun()
             else:
                 st.error("Failed to submit complaint.")
-
 # --- Main App Logic ---
 
 # Display the selected view based on session_state.current_view
